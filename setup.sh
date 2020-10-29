@@ -56,6 +56,9 @@ echo "Setting up Node..."
 mkdir $HOME/.npm-global
 npm config set prefix "$HOME/.npm-global"
 
+echo "Installing Vue CLI..."
+npm install -g @vue/cli
+
 echo "Installing Oh My ZSH..."
 curl -fsSL http://install.ohmyz.sh | sh
 
