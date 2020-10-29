@@ -1,3 +1,9 @@
+#!/bin/sh
+
+GITHUB_REPO_BASE="https://raw.githubusercontent.com/MattRighetti/dotfiles/master"
+
+cd $HOME
+
 echo "Creating an SSH ket for you..."
 ssh-keygen -t rsa
 
@@ -16,51 +22,65 @@ if test ! $(which brew); then
 fi
 
 # Update Homebrew
+echo "Updating Homebrew 🍺..."
 brew update
 
-echo "Installing Git..."
-brew install git
-echo "Setting up Git..."
+tools=(
+    git
+    gh
+    htop
+    jq
+    mysql
+    swiftlint
+    wget
+    maven
+    fzf
+    node
+    rustup
+    tldr
+    tmux
+    go
+)
 
+echo "Installing tools..."
+brew install ${tools[@]}
+brew cleanup
+
+echo "Setting up Git..."
 git config --global user.name "Mattia Righetti"
 git config --global user.email "matt95.righetti@gmail.com"
+curl -fsSL $GITHUB_REPO_BASE/.gitalias -o .gitalias
+curl -fsSL $GITHUB_REPO_BASE/.gitconfig >> .gitconfig
 
-echo "Installing GitHub tools..."
-brew install gh
-
-echo "Installing other utilities..."
-brew install htop
-brew install jq
-brew install mysql
-brew install swiftlint
-brew install wget
-brew install maven
-brew install fzf
-brew install node
-brew install go
-
-echo "Creating .zshrc"
-curl https://gist.githubusercontent.com/MattRighetti/4477c2ada837925a402cbdf662b3047e/raw/59ada1bc315c6960fb3016a2187c0a95948159c3/.zshrc > .zshrc
+echo "Setting up Node..."
+mkdir $HOME/.npm-global
+npm config set prefix "$HOME/.npm-global"
 
 echo "Installing Oh My ZSH..."
-curl -L http://install.ohmyz.sh | sh
+curl -fsSL http://install.ohmyz.sh | sh
+
+echo "Creating .zshrc"
+curl -fsSL $GITHUB_REPO_BASE/.zshrc -o .zshrc
 
 echo "Downloading zsh plugins..."
 cd $HOME/.oh-my-zsh/custom/plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone https://github.com/zsh-users/zsh-completions.git
 
-echo "Installing fonts..."
-brew tap homebrew/cask-fonts
-echo "Installing JetBrains Mono"
-brew cask install font-jetbrains-mono
-echo "Installing Fira Code Mono"
-brew cask install font-fira-mono
-brew cask install font-fira-code
+cd $HOME
 
-echo "Cleaning brew..."
+echo "Installing fonts..."
+fonts=(
+    font-jetbrains-mono
+    font-fira-mono
+    font-fira-code
+)
+
+brew tap homebrew/cask-fonts
+brew cask install ${fonts[@]}
 brew cleanup
 
+echo "Installing apps..."
 apps=(
     spotify
     goland
@@ -75,24 +95,27 @@ apps=(
     alfred
     cyberduck
     vlc
+    appcleaner
     transmission
+    tor-browser
     docker
     graphql-ide
     eul
     mysqlworkbench
+    sf-symbols
+    keka
 )
 
-echo "installing apps with Cask..."
 brew cask install --appdir="/Applications" ${apps[@]}
 brew cleanup
 
-echo "Setting some Mac settings..."
-source .macos
+echo "Setting macOS defaults..."
+curl -fsSL $GITHUB_REPO_BASE/.macos | sh
 
 echo "Creating Developer folder..."
 mkdir $HOME/Developer
 
 echo "Done!"
 
-read -p "Press [Enter] to reboot"
+read -p "Press [Enter] and enter password to reboot"
 sudo reboot

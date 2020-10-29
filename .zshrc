@@ -30,7 +30,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Default JDK version
 # to see all the available versions type `/usr/libexec/java_home -V`
 # to change java version just copy code below and change che version after -v
-export JAVA_HOME=$(/usr/libexec/java_home -v11.0.8)
+# export JAVA_HOME=$(/usr/libexec/java_home -v11.0.8)
 
 # NPM Global variable
 export PATH="$HOME/.npm-global/bin:$PATH"
@@ -38,17 +38,21 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 ######################
 #[Plugins and source]#
 ######################
-
+ZSH_PLUGINS=$ZSH/custom/plugins
 source $ZSH/oh-my-zsh.sh
-source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ######################
 #[Syntax Highlighter]#
 ######################
 
 # Enable highlighters
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(
+    main 
+    brackets 
+    pattern
+)
 
 # Override highlighter colors
 ZSH_HIGHLIGHT_STYLES[default]=none
