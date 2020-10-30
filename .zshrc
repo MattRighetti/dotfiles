@@ -14,8 +14,7 @@ plugins=(
 ######################
 #      [Aliases]     #
 ######################
-alias dkc='docker-compose'
-alias dk='docker'
+source $HOME/.aliases
 
 ######################
 # [Additional Paths] #

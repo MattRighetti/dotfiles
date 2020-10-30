@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 GITHUB_REPO_BASE="https://raw.githubusercontent.com/MattRighetti/dotfiles/master"
 
@@ -64,6 +64,12 @@ curl -fsSL http://install.ohmyz.sh | sh
 
 echo "Creating .zshrc"
 curl -fsSL $GITHUB_REPO_BASE/.zshrc -o .zshrc
+
+echo "Creating .vimrc"
+curl -fsSL $GITHUB_REPO_BASE/.vimrc -o .vimrc
+
+echo "Creating .aliases"
+curl -fsSL $GITHUB_REPO_BASE/.aliases -o .aliases
 
 echo "Downloading zsh plugins..."
 cd $HOME/.oh-my-zsh/custom/plugins
