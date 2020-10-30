@@ -88,6 +88,7 @@ apps=(
     spotify
     goland
     postman
+    telegram
     firefox
     visual-studio-code
     datagrip
