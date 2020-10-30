@@ -4,13 +4,6 @@ GITHUB_REPO_BASE="https://raw.githubusercontent.com/MattRighetti/dotfiles/master
 
 cd $HOME
 
-echo "Creating an SSH key for you..."
-ssh-keygen -t rsa
-
-echo "Please add this public key to Github \n"
-echo "https://github.com/account/shh \n"
-read -p "Press [Enter] key after you did this..."
-
 echo "Installing Xcode codechain..."
 xcode-select --Installing
 
@@ -18,7 +11,7 @@ xcode-select --Installing
 # Install if not present
 if test ! $(which brew); then
     echo "Installing Homebrew 🍺..."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 # Update Homebrew
@@ -31,7 +24,6 @@ tools=(
     htop
     jq
     mysql
-    swiftlint
     wget
     maven
     fzf
@@ -50,17 +42,18 @@ echo "Setting up Git..."
 git config --global user.name "Mattia Righetti"
 git config --global user.email "matt95.righetti@gmail.com"
 curl -fsSL $GITHUB_REPO_BASE/.gitalias -o .gitalias
-curl -fsSL $GITHUB_REPO_BASE/.gitconfig >> .gitconfig
+git config --global include.path "$HOME/.gitalias"
 
 echo "Setting up Node..."
 mkdir $HOME/.npm-global
+mkdir $HOME/.npm-global/lib
 npm config set prefix "$HOME/.npm-global"
 
 echo "Installing Vue CLI..."
 npm install -g @vue/cli
 
 echo "Installing Oh My ZSH..."
-curl -fsSL http://install.ohmyz.sh | sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "Creating .zshrc"
 curl -fsSL $GITHUB_REPO_BASE/.zshrc -o .zshrc
@@ -75,7 +68,6 @@ echo "Downloading zsh plugins..."
 cd $HOME/.oh-my-zsh/custom/plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone https://github.com/zsh-users/zsh-completions.git
-
 cd $HOME
 source $HOME/.zshrc
 
@@ -121,7 +113,7 @@ brew cask install --appdir="/Applications" ${apps[@]}
 brew cleanup
 
 echo "Setting macOS defaults..."
-curl -fsSL $GITHUB_REPO_BASE/.macos | sh
+/bin/bash -c "$(curl -fsSL $GITHUB_REPO_BASE/.macos)"
 
 echo "Creating Developer folder..."
 mkdir $HOME/Developer
