@@ -4,7 +4,7 @@ GITHUB_REPO_BASE="https://raw.githubusercontent.com/MattRighetti/dotfiles/master
 
 cd $HOME
 
-echo "Creating an SSH ket for you..."
+echo "Creating an SSH key for you..."
 ssh-keygen -t rsa
 
 echo "Please add this public key to Github \n"
