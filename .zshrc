@@ -34,6 +34,12 @@ export ZSH="$HOME/.oh-my-zsh"
 # NPM Global variable
 export PATH="$HOME/.npm-global/bin:$PATH"
 
+# Go
+export GOPATH=$HOME/Developer/go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
 ######################
 #[Plugins and source]#
 ######################

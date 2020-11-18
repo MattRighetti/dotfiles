@@ -1,21 +1,33 @@
 #!/usr/bin/env bash
 
+OHMYZSH_INSTALL_URL="https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
+BREW_INSTALL_URL="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
 GITHUB_REPO_BASE="https://raw.githubusercontent.com/MattRighetti/dotfiles/master"
+
+SCRIPT_UTILS_URL="${GITHUB_REPO_BASE}/scriptUtils.sh"
+MACOS_DOTFILES_URL="${GITHUB_REPO_BASE}/.macos"
+GIT_ALIAS_URL="${GITHUB_REPO_BASE}/.gitalias"
+ALIASES_URL="${GITHUB_REPO_BASE}/.aliases"
+ZSHRC_URL="${GITHUB_REPO_BASE}/.zshrc"
+VIMRC_URL="${GITHUB_REPO_BASE}/.vimrc"
+
+wget ${SCRIPT_UTILS_URL}
+source scriptUtils.sh
 
 cd $HOME
 
-echo "Installing Xcode codechain..."
-xcode-select --Installing
+infoln "Installing Xcode codechain..."
+xcode-select --install
 
 # Check for Homebrew
 # Install if not present
 if test ! $(which brew); then
-    echo "Installing Homebrew 🍺..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    infoln "Installing Homebrew 🍺..."
+    echo | /bin/bash -c "$(curl -fsSL ${BREW_INSTALL_URL})"
 fi
 
 # Update Homebrew
-echo "Updating Homebrew 🍺..."
+infoln "Updating Homebrew 🍺..."
 brew update
 
 tools=(
@@ -34,44 +46,42 @@ tools=(
     go
 )
 
-echo "Installing tools..."
+infoln "Installing tools..."
 brew install ${tools[@]}
-brew cleanup
 
-echo "Setting up Git..."
+infoln "Setting up Git..."
 git config --global user.name "Mattia Righetti"
 git config --global user.email "matt95.righetti@gmail.com"
-curl -fsSL $GITHUB_REPO_BASE/.gitalias -o .gitalias
-git config --global include.path "$HOME/.gitalias"
+wget ${GIT_ALIAS_URL}
+git config --global include.path "${HOME}/.gitalias"
 
-echo "Setting up Node..."
-mkdir $HOME/.npm-global
-mkdir $HOME/.npm-global/lib
-npm config set prefix "$HOME/.npm-global"
+infoln "Setting up Node..."
+mkdir -p ${HOME}/.npm-global/lib
+npm config set prefix "${HOME}/.npm-global"
 
-echo "Installing Vue CLI..."
+infoln "Installing Vue CLI..."
 npm install -g @vue/cli
 
-echo "Installing Oh My ZSH..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+infoln "Installing Oh My ZSH..."
+/bin/bash -c "$(curl -fsSL ${OHMYZSH_INSTALL_URL})"
 
-echo "Creating .zshrc"
-curl -fsSL $GITHUB_REPO_BASE/.zshrc -o .zshrc
+infoln "Creating .zshrc"
+wget ${ZSHRC_URL}
 
-echo "Creating .vimrc"
-curl -fsSL $GITHUB_REPO_BASE/.vimrc -o .vimrc
+infoln "Creating .vimrc"
+wget ${VIMRC_URL}
 
-echo "Creating .aliases"
-curl -fsSL $GITHUB_REPO_BASE/.aliases -o .aliases
+infoln "Creating .aliases"
+wget ${ALIASES_URL}
 
-echo "Downloading zsh plugins..."
+infoln "Downloading zsh plugins..."
 cd $HOME/.oh-my-zsh/custom/plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone https://github.com/zsh-users/zsh-completions.git
 cd $HOME
 source $HOME/.zshrc
 
-echo "Installing fonts..."
+infoln "Installing fonts..."
 fonts=(
     font-jetbrains-mono
     font-fira-mono
@@ -80,9 +90,8 @@ fonts=(
 
 brew tap homebrew/cask-fonts
 brew cask install ${fonts[@]}
-brew cleanup
 
-echo "Installing apps..."
+infoln "Installing apps..."
 apps=(
     spotify
     goland
@@ -112,13 +121,13 @@ apps=(
 brew cask install --appdir="/Applications" ${apps[@]}
 brew cleanup
 
-echo "Setting macOS defaults..."
-/bin/bash -c "$(curl -fsSL $GITHUB_REPO_BASE/.macos)"
+infoln "Setting macOS defaults..."
+/bin/bash -c "$(curl -fsSL ${MACOS_DOTFILES_URL})"
 
-echo "Creating Developer folder..."
+infoln "Creating Developer folder..."
 mkdir $HOME/Developer
 
-echo "Done!"
+successln "Done!"
 
 read -p "Press [Enter] and enter password to reboot"
 sudo reboot
