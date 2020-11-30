@@ -11,7 +11,7 @@ ALIASES_URL="${GITHUB_REPO_BASE}/.aliases"
 ZSHRC_URL="${GITHUB_REPO_BASE}/.zshrc"
 VIMRC_URL="${GITHUB_REPO_BASE}/.vimrc"
 
-wget ${SCRIPT_UTILS_URL}
+curl ${SCRIPT_UTILS_URL} -o scriptUtils.sh -s
 source scriptUtils.sh
 
 cd $HOME
@@ -31,6 +31,7 @@ infoln "Updating Homebrew 🍺..."
 brew update
 
 tools=(
+    tree
     git
     gh
     htop
@@ -62,11 +63,11 @@ npm config set prefix "${HOME}/.npm-global"
 infoln "Installing Vue CLI..."
 npm install -g @vue/cli
 
-infoln "Installing Oh My ZSH..."
-/bin/bash -c "$(curl -fsSL ${OHMYZSH_INSTALL_URL})"
-
 infoln "Creating .zshrc"
 wget ${ZSHRC_URL}
+
+infoln "Installing Oh My ZSH..."
+/bin/bash -c "$(curl -fsSL ${OHMYZSH_INSTALL_URL})" "" --unattended
 
 infoln "Creating .vimrc"
 wget ${VIMRC_URL}

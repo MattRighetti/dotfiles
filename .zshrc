@@ -44,6 +44,7 @@ export PATH=$PATH:$GOROOT/bin
 #[Plugins and source]#
 ######################
 ZSH_PLUGINS=$ZSH/custom/plugins
+ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
 source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
