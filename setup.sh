@@ -78,6 +78,7 @@ wget ${ALIASES_URL}
 infoln "Downloading zsh plugins..."
 cd $HOME/.oh-my-zsh/custom/plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+git clone https://github.com/zsh-users/zsh-autosuggestions.git
 git clone https://github.com/zsh-users/zsh-completions.git
 cd $HOME
 source $HOME/.zshrc
