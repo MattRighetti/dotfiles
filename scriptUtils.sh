@@ -8,33 +8,46 @@ C_YELLOW='\033[1;33m'
 
 # println echos string
 function println() {
-  echo -e "$1"
+    echo -e "$1"
 }
 
 # errorln echos i red color
 function errorln() {
-  println "${C_RED}${1}${C_RESET}"
+    println "${C_RED}${1}${C_RESET}"
 }
 
 # successln echos in green color
 function successln() {
-  println "${C_GREEN}${1}${C_RESET}"
+    println "${C_GREEN}${1}${C_RESET}"
 }
 
 # infoln echos in blue color
 function infoln() {
-  println "${C_BLUE}${1}${C_RESET}"
+    println "${C_BLUE}${1}${C_RESET}"
 }
 
 # warnln echos in yellow color
 function warnln() {
-  println "${C_YELLOW}${1}${C_RESET}"
+    println "${C_YELLOW}${1}${C_RESET}"
 }
 
 # fatalln echos in red color and exits with fail status
 function fatalln() {
-  errorln "$1"
-  exit 1
+    errorln "$1"
+    exit 1
+}
+
+function plistbuddy() {
+    KEY=$1
+    TYPE=$2
+    VAL=$3
+    FILE=$4
+
+    /usr/libexec/PlistBuddy -c "Add ${KEY} ${TYPE} ${VAL}" ${FILE}
+    if [ $? -eq 1 ]; then
+        warnln "${KEY} already exist, overwriting existent value"
+        /usr/libexec/PlistBuddy -c "Set ${KEY} ${VAL}" ${FILE}
+    fi
 }
 
 export -f errorln
