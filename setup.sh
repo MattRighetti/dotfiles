@@ -55,6 +55,7 @@ git config --global user.name "Mattia Righetti"
 git config --global user.email "matt95.righetti@gmail.com"
 wget ${GIT_ALIAS_URL}
 git config --global include.path "${HOME}/.gitalias"
+git config --global merge.ff false
 
 infoln "Setting up Node..."
 mkdir -p ${HOME}/.npm-global/lib
