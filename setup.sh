@@ -45,6 +45,7 @@ tools=(
     tldr
     tmux
     go
+    transmission
 )
 
 infoln "Installing tools..."
@@ -111,7 +112,6 @@ apps=(
     cyberduck
     vlc
     appcleaner
-    transmission
     tor-browser
     docker
     graphql-ide
