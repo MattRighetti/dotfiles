@@ -9,6 +9,7 @@ plugins=(
     fzf 
     tmux
     docker
+    genpass
 )
 
 ######################
@@ -45,6 +46,7 @@ export PATH=$PATH:$GOROOT/bin
 ######################
 ZSH_PLUGINS=$ZSH/custom/plugins
 ZSH_DISABLE_COMPFIX=true
+ZSH_COMPDUMP="${HOME}/.cache/zsh/zcompdump-$ZSH_VERSION"
 source $ZSH/oh-my-zsh.sh
 source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
