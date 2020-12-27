@@ -31,6 +31,7 @@ other_bin=(
     wget
     tldr
     aria2
+    ack
 )
 
 gnu_tools=(
