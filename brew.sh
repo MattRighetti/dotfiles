@@ -30,6 +30,7 @@ other_bin=(
     tmux
     wget
     tldr
+    aria2
 )
 
 gnu_tools=(
@@ -97,9 +98,11 @@ apps=(
     docker
     graphql-ide
     eul
+    iterm2
     mysqlworkbench
     sf-symbols
     keka
+    balenaetcher
 )
 
 infoln "Installing tools..."
