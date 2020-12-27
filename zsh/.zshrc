@@ -84,11 +84,3 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[assign]=none
-
-# Utils functions
-function broutine() {
-    echo "Runnign brew upgrade"
-    brew upgrade
-    echo "Running brew cleanup"
-    brew cleanup
-}
