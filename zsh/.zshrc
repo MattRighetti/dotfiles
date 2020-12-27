@@ -1,28 +1,24 @@
 ######################
 #       [Theme]      #
 ######################
-
 ZSH_THEME="robbyrussell"
 
 plugins=(
-    git 
-    fzf 
-    tmux
+    golang
+    fzf
     docker
     genpass
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-completions
 )
-
-######################
-#      [Aliases]     #
-######################
-source $HOME/.aliases
 
 ######################
 # [Additional Paths] #
 ######################
 
 # Fuzzy find
-export FZF_BASE="/usr/local/Cellar/fzf/0.21.1/"
+export FZF_BASE=/usr/local/opt/fzf
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -35,21 +31,34 @@ export ZSH="$HOME/.oh-my-zsh"
 # NPM Global variable
 export PATH="$HOME/.npm-global/bin:$PATH"
 
-# Go
+######################
+#[        GO        ]#
+######################
 export GOPATH=$HOME/Developer/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 ######################
+#[        GNU       ]#
+######################
+# These have to be put before standard /usr/bin to override them
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/gnu-indent/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/gnu-getopt/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/gnu-tar/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/gnutls/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/gawk/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/grep/libexec/gnubin:$PATH
+
+######################
 #[Plugins and source]#
 ######################
-ZSH_PLUGINS=$ZSH/custom/plugins
 ZSH_DISABLE_COMPFIX=true
-ZSH_COMPDUMP="${HOME}/.cache/zsh/zcompdump-$ZSH_VERSION"
+DISABLE_UPDATE_PROMPT=true
+ZSH_COMPDUMP="${HOME}/.cache/zsh/zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 source $ZSH/oh-my-zsh.sh
-source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ######################
 #[Syntax Highlighter]#
