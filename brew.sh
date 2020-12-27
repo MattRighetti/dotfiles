@@ -13,20 +13,23 @@ infoln "Upgrading brew..."
 brew upgrade
 
 tools=(
-    tree
     git
     gh
-    htop
-    jq
     mysql
-    wget
     maven
     node
     rustup
-    tldr
-    tmux
     go
     transmission
+)
+
+other_bin=(
+    htop
+    jq
+    tree
+    tmux
+    wget
+    tldr
 )
 
 gnu_tools=(
@@ -65,6 +68,7 @@ ctf_tools=(
     tcpreplay
     tcptrace
     xz
+    nmap
 )
 
 fonts=(
@@ -106,6 +110,9 @@ brew install ${gnu_tools[@]}
 
 infoln "Installing ctf_tools..."
 brew install ${ctf_tools[@]}
+
+infoln "Installing other tools..."
+brew install ${other_bin[@]}
 
 infoln "Installing fonts..."
 brew tap homebrew/cask-fonts
