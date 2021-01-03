@@ -21,6 +21,7 @@ tools=(
     rustup
     go
     transmission
+    openjdk
 )
 
 other_bin=(
@@ -104,6 +105,7 @@ apps=(
     sf-symbols
     keka
     balenaetcher
+    docker
 )
 
 infoln "Installing tools..."
