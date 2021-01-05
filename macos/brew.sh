@@ -47,6 +47,8 @@ gnu_tools=(
     gawk
     grep
     stow
+    flex
+    bison
 )
 
 ctf_tools=(

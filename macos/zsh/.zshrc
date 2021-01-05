@@ -51,6 +51,8 @@ export PATH=/usr/local/opt/gnu-tar/libexec/gnubin:$PATH
 export PATH=/usr/local/opt/gnutls/libexec/gnubin:$PATH
 export PATH=/usr/local/opt/gawk/libexec/gnubin:$PATH
 export PATH=/usr/local/opt/grep/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/flex/bin:$PATH
+export PATH=/usr/local/opt/bison/bin:$PATH
 
 ######################
 #[Plugins and source]#
