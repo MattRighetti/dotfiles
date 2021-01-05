@@ -38,7 +38,7 @@ packages=(
 )
 
 git clone https://github.com/mattrighetti/dotfiles.git $HOME/Developer/dotfiles
-stow --dir=$HOME/Developer/dotfiles --target=$HOME ${packages[@]}
+stow --dir=$HOME/Developer/dotfiles/linux --target=$HOME ${packages[@]}
 
 successln "Done!"
 
