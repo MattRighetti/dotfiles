@@ -80,34 +80,6 @@ fonts=(
     font-fira-code
 )
 
-apps=(
-    spotify
-    goland
-    postman
-    telegram
-    firefox
-    visual-studio-code
-    datagrip
-    intellij-idea
-    whatsapp
-    pycharm
-    bartender
-    alfred
-    cyberduck
-    vlc
-    appcleaner
-    tor-browser
-    docker
-    graphql-ide
-    eul
-    iterm2
-    mysqlworkbench
-    sf-symbols
-    keka
-    balenaetcher
-    docker
-)
-
 infoln "Installing tools..."
 brew install ${tools[@]}
 
@@ -122,9 +94,6 @@ brew install ${other_bin[@]}
 
 infoln "Installing fonts..."
 brew tap homebrew/cask-fonts
-brew cask install ${fonts[@]}
-
-infoln "Installing Applications"
-brew cask install --appdir="/Applications" ${apps[@]}
+brew install --cask ${fonts[@]}
 
 brew cleanup

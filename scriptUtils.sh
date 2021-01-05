@@ -49,8 +49,3 @@ function plistbuddy() {
         /usr/libexec/PlistBuddy -c "Set ${KEY} ${VAL}" ${FILE}
     fi
 }
-
-export -f errorln
-export -f successln
-export -f infoln
-export -f warnln
