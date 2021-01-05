@@ -4,7 +4,7 @@
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/scriptUtils.sh)"
 
 # Install all commands, apps, tools, fonts with Homebrew
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/brew.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/linux/brew.sh)"
 
 infoln "Creating npm global directory"
 mkdir -p $HOME/.npm-global/lib
@@ -17,12 +17,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 infoln "Downloading zsh plugins..."
 ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-completions.git $ZSH_CUSTOM/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git  $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions.git      $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions.git          $ZSH_CUSTOM/plugins/zsh-completions
 
 infoln "Setting macOS defaults..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/.macos)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/linux/.macos)"
 
 infoln "Creating Developer folder..."
 mkdir $HOME/Developer
