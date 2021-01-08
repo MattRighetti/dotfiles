@@ -56,6 +56,11 @@ export PATH=/home/linuxbrew/.linuxbrew/opt/gawk/libexec/gnubin:$PATH
 export PATH=/home/linuxbrew/.linuxbrew/opt/grep/libexec/gnubin:$PATH
 
 ######################
+#     PYTHON         #
+######################
+source .config/conda/config
+
+######################
 #[Plugins and source]#
 ######################
 ZSH_DISABLE_COMPFIX=true
