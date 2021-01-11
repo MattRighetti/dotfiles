@@ -91,7 +91,6 @@ apps=(
     visual-studio-code
     datagrip
     intellij-idea
-    whatsapp
     pycharm
     bartender
     alfred
@@ -108,6 +107,7 @@ apps=(
     keka
     balenaetcher
     docker
+    appcode
 )
 
 infoln "Installing tools..."
