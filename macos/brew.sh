@@ -22,6 +22,8 @@ tools=(
     go
     transmission
     openjdk
+    mongodb-database-tools
+    mongodb/brew/mongodb-community-shell
 )
 
 other_bin=(
