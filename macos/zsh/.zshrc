@@ -40,6 +40,11 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 ######################
+#[       RUST       ]#
+######################
+export PATH=$HOME/.cargo/bin:$PATH
+
+######################
 #[        GNU       ]#
 ######################
 # These have to be put before standard /usr/bin to override them

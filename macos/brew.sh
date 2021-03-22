@@ -20,6 +20,7 @@ tools=(
     node
     rustup
     go
+    cargo
     transmission
     openjdk
     mongodb-database-tools
