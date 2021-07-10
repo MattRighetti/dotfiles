@@ -1463,3 +1463,6 @@
 
   ull = pull
   ush = push
+
+  [init]
+	defaultBranch = master
