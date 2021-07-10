@@ -27,6 +27,13 @@ tools=(
     mongodb/brew/mongodb-community-shell
 )
 
+rust_bins=(
+    bat
+    fd
+    procs
+    tokei
+)
+
 other_bin=(
     htop
     jq
@@ -36,6 +43,7 @@ other_bin=(
     tldr
     aria2
     ack
+    grpcurl
 )
 
 gnu_tools=(
@@ -118,6 +126,9 @@ brew install ${tools[@]}
 
 infoln "Installing gnu_tools..."
 brew install ${gnu_tools[@]}
+
+infoln "Installing rust_bins..."
+brew install ${rust_bins[@]}
 
 infoln "Installing ctf_tools..."
 brew install ${ctf_tools[@]}
